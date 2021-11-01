@@ -30,6 +30,7 @@ public class DlgAsignarValores extends JDialog implements ActionListener {
 	private JButton btnAñadir;
 	private JLabel lblImagen;
 	private JComboBox cboArtefac;
+	private JButton btnGuardar;
 
 	/**
 	 * Launch the application.
@@ -107,7 +108,8 @@ public class DlgAsignarValores extends JDialog implements ActionListener {
 		btnAñadir.setBounds(410, 175, 197, 22);
 		contentPanel.add(btnAñadir);
 		
-		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(this);
 		btnGuardar.setBounds(292, 175, 89, 23);
 		contentPanel.add(btnGuardar);
 		
@@ -135,6 +137,9 @@ public class DlgAsignarValores extends JDialog implements ActionListener {
 	   }
 	
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnGuardar) {
+			actionPerformedBtnGuardar(e);
+		}
 		if (e.getSource() == cboArtefac) {
 			actionPerformedCboPrueba(e);
 		}
@@ -162,11 +167,16 @@ public class DlgAsignarValores extends JDialog implements ActionListener {
 	}	
 	
 	public void imagen(String ubicacion){
+		
+		int uno;
+		
 		ImageIcon imagen = new ImageIcon(getClass().getResource(ubicacion)); 
 		ImageIcon icono = new ImageIcon(imagen.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_DEFAULT));
 		lblImagen.setIcon(icono);
 
 	}
 	protected void actionPerformedCboPrueba(ActionEvent e) {
+	}
+	protected void actionPerformedBtnGuardar(ActionEvent e) {
 	}
 }
